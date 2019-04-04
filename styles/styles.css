@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url("https://use.typekit.net/ice6ivo.css"); /*bebas-neue*/
+
+body  {font-family: Muli, sans-serif; padding-top: 60px; font-size: 12px }
+p, input, select, a {font-family: Muli, sans-serif}
+
+.green {color: green}
+.red {color: red} 
+.white {color: #FFFFFF}
+.p-blue {color: #00B0F0}
+.bg-pblue {background-color: #00B0F0}
+
+h1, h2, h3, h4, h5 {font-family: 'bebas-neue', sans-serif;color: #00B0F0} 
+h1 {font-size: 2.2em}
+h2 {font-size: 1.8em}
+h3 {font-size: 1.6em}
+h4 {font-size: 1.4em}
+h5, .panel-heading {font-size: 1.2em}
+
+.main-content {min-height: 300px; padding-top: 30px}
+.fa-star, .fa-star-half-alt {color:gold}
+.rate_questions li {padding: 5px 0 5px 0} 
+
+.border-left {border-left: 1px solid grey}
+.border-right {border-right: 1px solid grey}
+.back-link {padding: 5px 10px 0 0} 
+.col-sm-10, .col-sm-2 {padding-bottom: 10px}
+.control-label {font-size: 1.1em}
+.control-value {font-size: 1.1em; font-weight: bold; padding-bottom: 10px}
+.control-value-1 {font-size: 1.1em}
+.buffer {height: 30px}
+
+.message { font-weight: bold; text-align: center; margin-top: 20px; margin-bottom: 20px } 
+
+#footer-div {padding-bottom: 20px}
+
+input[type="button"], input[type="submit"], button, .btn  {
+    background-color: #00B0F0;
+    border: none;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    border-radius: 4px;
+}
+input[type="button"]:hover, input[type="submit"]:hover, button:hover, .btn:hover  {
+    background-color: #66cff6;
+    color: #00B0F0;
+}
+
+/*Nav Bar*/ 
+.nav {
+    font-family: Muli, sans-serif;
+    font-size: 1.1em;
+    background-color: #00B0F0;
+    color: #ffffff; 
+}
+.nav a {
+    color: #ffffff; 
+    font-family: Muli, sans-serif;
+}
+.navbar-inverse .navbar-brand {font-family: Muli, sans-serif; color :#ffffff}
+.navbar-inverse .navbar-nav>li>a {font-family: Muli, sans-serif; color :#ffffff}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {font-family: Muli, sans-serif; background-color: #00B0F0; color :#ffffff} 
+
+
+/*Search Bar*/
+#search_bar {text-align: left}
+#search_in {margin-left: 85px}
+
+/*Index Pages*/
+.company-logo, .agency-logo { height: 80px; margin-bottom: 10px}
+
+
+/*Data Mod History*/
+.mod-history {font-size: .8em; padding: 5px 5px 5px 5px}
+.mod-history-details {font-size: .8em; padding: 5px 5px 20px 20px; border-top: 1px solid #dddddd}
+.mod-history-details h3 {font-size: 1.2em; font-weight: bold; margin-top: 10px } 
+
+/*Dashboard*/
+.descriptive-text, .descriptive-text p, .descriptive-text ul, .descriptive-text li {font-size: .95em}
+.descriptive-text, .descriptive-text ul {margin: 0; padding-bottom: 5px}
+.list-group-item { font-size: 11px} 
+table.desktop-view {display: block}
+table.mobile-view {display:none}
+
+/*Pagination Links*/
+.page-links { padding: 10px 5px 5px 10px; text-align: center }
+.page-links a, .page-links span { padding: 0 10px 0 10px; font-weight: bold } 
+
+/*Results*/
+.show-records {min-height: 200px}
+
+/*Index List*/
+.index-section-title {margin-left: 10px}
+
+/* Modal Details */
+.match-found {font-size: 1em}
+.quick-view {font-size: 1.2em; color: #000000}
+
+
+/*mobile screens*/
+@media screen and (max-width: 479px) {
+
+    /*Dashboard*/
+    table.desktop-view {display:none}
+    table.mobile-view {display:block}
+
+    .main-content {min-height: 100px; padding-top: 0}
+
+}
