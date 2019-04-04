@@ -69,6 +69,9 @@ $route['government'] = 'government';
 $route['business/(:any)'] = 'business/view/$1';
 $route['business'] = 'business';
 
+$route['citizen/(:any)'] = 'citizen/view/$1';
+$route['citizen'] = 'citizen';
+
 /* routing via pages must come last */
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
