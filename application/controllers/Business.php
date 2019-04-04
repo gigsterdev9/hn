@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Government extends CI_Controller {
+class Business extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
@@ -8,7 +8,6 @@ class Government extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('ion_auth');
         $this->load->model('entities_model');
-        $this->load->model('products_model');
         $this->load->library('pagination');
         
         if (!$this->ion_auth->logged_in()) {
@@ -21,18 +20,18 @@ class Government extends CI_Controller {
 
     public function index() {
 
-        $data['agencies'] = $this->entities_model->get_all_agencies(0,5);
-        if (empty($data['agencies'])) {
+        $data['businesses'] = $this->entities_model->get_all_biz(0,5);
+        if (empty($data['businesses'])) {
             show_404();
         }
-        $data['title'] = 'Government';
+        $data['title'] = 'Business';
         $this->load->view('templates/header', $data);
-        $this->load->view('government/index', $data);
+        $this->load->view('business/index', $data);
         $this->load->view('templates/footer');
 
     }
 
-    public function view($slug = NULL) {
+    public function view($id = NULL) {
 
         /*
         $data['visitor'] = $this->visitors_model->get_visitor_by_id($id);
@@ -46,16 +45,10 @@ class Government extends CI_Controller {
         $this->load->view('visitors/view', $data);
         $this->load->view('templates/footer');
         */
-        $data['agency'] = $this->entities_model->get_entity_by_slug($slug);
-        if (empty($data['agency'])) {
-            show_404();
-        }
-        //echo $data['agency']['entity_id']; die();
-        $data['programs'] = $this->products_model->get_prods_by_entity($data['agency']['entity_id']);
-        //echo '<pre>'; print_r($data); echo '</pre>';
+        
 
         $this->load->view('templates/header', $data);
-        $this->load->view('government/view', $data);
+        $this->load->view('business/view', $data);
         $this->load->view('templates/footer');
 
     }

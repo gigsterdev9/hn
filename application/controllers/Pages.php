@@ -6,11 +6,13 @@ class Pages extends CI_Controller {
 			parent::__construct();
 			$this->load->helper('url');
             $this->load->library('ion_auth');
+            $this->load->model('entities_model');
             
             if (!$this->ion_auth->logged_in()) {
                 redirect('auth/login');
             }
             
+            /*
             if ($this->ion_auth->in_group('wwf')) {
                 redirect('/photoid');
             }
@@ -18,6 +20,8 @@ class Pages extends CI_Controller {
             if ($this->ion_auth->in_group('partner')) {
                 redirect('/photoid/latest');
             }
+            */
+            
             //$this->output->enable_profiler(TRUE);	
             
     }
@@ -91,6 +95,12 @@ class Pages extends CI_Controller {
                 $data['partner_entries'] = $this->visitors_model->partner_entries_count();
                 
                 */
+
+                /* Figures Section */ 
+                $data['agencies'] = $this->entities_model->get_all_agencies();
+                $data['businesses'] = $this->entities_model->get_all_biz();
+                $data['individuals'] = $this->entities_model->get_all_ind();
+
             }
             
             $data['title'] = ucfirst($page); // Capitalize the first letter

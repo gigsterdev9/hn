@@ -1,3 +1,5 @@
+<?php //echo '<pre>'; print_r($total_entities); echo '</pre>'; ?>
+
 <div class="container">
 	<h1><span class="glyphicon glyphicon-dashboard"></span> DASHBOARD</h1>
 	<p>&nbsp;</p>
@@ -138,33 +140,47 @@
                     <table class="table-bordered table-condensed" style="width: 100%">
 						<tr>
                             <td class="text-center"  valign="top">
-                                Agencies <br /> <span style="font-size: 2em"><?php echo '5' ?></span>
+                                Agencies <br /> <span style="font-size: 2em"><?php echo count($agencies); ?></span>
         					</td>
 							<td class="text-center"  valign="top">
-                                Businesses <br /> <span style="font-size: 2em"><?php echo '20' ?></span><br />
+                                Businesses <br /> <span style="font-size: 2em"><?php echo count($businesses); ?></span><br />
 							</td>
                             <td class="text-center"  valign="top">
-                                Citizens <br /> <span style="font-size: 2em"><?php echo '30' ?></span><br />
+                                Citizens <br /> <span style="font-size: 2em"><?php echo count($individuals); ?></span><br />
 							</td>
                         </tr>
                     </table>
                 <div class="buffer">&nbsp;</div>
                 <strong>Top 5 Agencies</strong><br />
                     <ul>
+                        <!-- 
                         <li><a href="<?php echo base_url('government-denr'); ?>">Dept of Environment and Natural Resources</a></li>
                         <li><a href="#">Dept of Education</a></li>
                         <li><a href="#">Metropolitan Manila Development Authority</a></li>
                         <li><a href="#">Dept of Interior and Local Government</a></li>
                         <li><a href="#">Land Transportation Office</a></li>           
+                        -->
+                        <?php 
+                        foreach ($agencies as $agency) {
+                            echo '<li><a href="government/'.$agency['entity_slug'].'">'.$agency['entity_name'].'</li>';
+                        }
+                        ?>
                     </ul>
                 <div class="buffer">&nbsp;</div>
                 <strong>Top 5 Businesses</strong><br />
                     <ul>
+                        <!-- 
                         <li><a href="#">ABC Company</a></li>
                         <li><a href="#">DEF Company</a></li>
                         <li><a href="#">GHI Company</a></li>
                         <li><a href="#">JKL Company</a></li>
                         <li><a href="#">MNO Company</a></li>
+                        -->
+                        <?php 
+                        foreach ($businesses as $biz) {
+                            echo '<li><a href="business/'.$biz['entity_slug'].'">'.$biz['entity_name'].'</li>';
+                        }
+                        ?>
                     </ul>
 				</div>
 			</div>

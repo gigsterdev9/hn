@@ -63,11 +63,16 @@ $route['users'] = 'users';
 $route['settings/edit/(:any)'] = 'settings/edit/$1';
 $route['settings'] = 'settings';
 
+$route['government/(:any)'] = 'government/view/$1';
+$route['government'] = 'government';
+
+$route['business/(:any)'] = 'business/view/$1';
+$route['business'] = 'business';
+
+/* routing via pages must come last */
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
 
 /*
-$route['government/(:any)'] = 'government/$1';
-$route['business/(:any)'] = 'business/$1';
 $route['citizen/(:any)'] = 'citizen/$1';
 */
