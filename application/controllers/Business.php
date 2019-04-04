@@ -8,6 +8,9 @@ class Business extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('ion_auth');
         $this->load->model('entities_model');
+        $this->load->model('products_model');
+        $this->load->model('news_model');
+        $this->load->model('reviews_model');
         $this->load->library('pagination');
         
         if (!$this->ion_auth->logged_in()) {
@@ -31,7 +34,7 @@ class Business extends CI_Controller {
 
     }
 
-    public function view($id = NULL) {
+    public function view($slug = NULL) {
 
         /*
         $data['visitor'] = $this->visitors_model->get_visitor_by_id($id);
@@ -45,7 +48,15 @@ class Business extends CI_Controller {
         $this->load->view('visitors/view', $data);
         $this->load->view('templates/footer');
         */
-        
+        $data['biz'] = $this->entities_model->get_entity_by_slug($slug);
+        if (empty($data['biz'])) {
+            show_404();
+        }
+        $data['products'] = $this->products_model->get_prods_by_entity($data['biz']['entity_id']);
+        $data['news'] = $this->news_model->get_news_by_entity($data['biz']['entity_id']);
+        $data['reviews'] = $this->reviews_model->get_reviews_by_entity($data['biz']['entity_id']);
+
+        //echo '<pre>'; print_r($data); echo '</pre>';
 
         $this->load->view('templates/header', $data);
         $this->load->view('business/view', $data);

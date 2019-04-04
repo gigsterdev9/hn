@@ -100,6 +100,11 @@ table.mobile-view {display:none}
 .match-found {font-size: 1em}
 .quick-view {font-size: 1.2em; color: #000000}
 
+/* View Page */
+.logo-div {
+    text-align: center;
+}
+
 
 /*mobile screens*/
 @media screen and (max-width: 479px) {

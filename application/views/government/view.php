@@ -5,10 +5,10 @@
 		<!-- <div class="text-right back-link"><a href="javascript:history.go(-1)">&laquo; Back</a></div> -->
 		<div class="panel-body">
             <div class="row">
-                <div class="col-md-1">
+                <div class="col-md-2 logo-div">
                     <img src="<?php echo base_url('/images/'.$agency['entity_logo_filename']) ?>" alt="placeholder_logo" class="company-logo" />
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <h4><?php echo $agency['entity_name']; ?></h4>
                     Parent Agency: <?php echo ($agency['entity_parent'] != NULL) ? $agency['entity_parent'] : 'N/A' ?> <br />
                     Executive: <?php echo $agency['entity_exec'] ?> <br />
@@ -46,6 +46,17 @@
                 </div>
                 <div class="col-md-4 border-left">
                     <h3>News and Updates</h3>
+                        <?php 
+                            foreach ($news as $item) {
+                        ?>
+                                <div>
+                                    <p class="date"><?php echo $item['publish_date'] ?>.</p>
+                                    <p><?php echo $item['news_content'] ?></p>
+                                </div>
+                        <?php       
+                            }
+                        ?>
+                        <!--
                         <div>
                             <p class="date">2019-01-01.</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris convallis tellus at urna tempor suscipit. Integer dui ipsum, lacinia nec consectetur quis, luctus rhoncus ante. 
@@ -61,11 +72,37 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris convallis tellus at urna tempor suscipit. Integer dui ipsum, lacinia nec consectetur quis, luctus rhoncus ante. 
                             </p>
                         </div>
+                        -->
                         <div class="text-right"><a href="">See more...</a></div>
                     </ul>
                 </div>
                 <div class="col-md-4 border-left">
                     <h3>Reviews</h3>
+                        <?php 
+                            foreach ($reviews as $review) {
+                        ?>
+                                <div>
+                                    <p class="date"><?php echo $review['review_created'] . '. ' . $review['reviewer'] ?>
+                                    <?php
+                                    for ($i=1; $i<=$review['review_stars']; $i++) {
+                                        echo '<i class="fas fa-star"></i>';
+                                    }
+                                    switch ($review['review_stars']) {
+                                        case '1': echo '<i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i>'; break;
+                                        case '2': echo '<i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> '; break;
+                                        case '3': echo '<i class="far fa-star"></i> <i class="far fa-star"></i> '; break;
+                                        case '4': echo '<i class="far fa-star"></i> '; break;
+                                        default: break;
+                                    }
+                                    ?>
+                                    </p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris convallis tellus at urna tempor suscipit. Integer dui ipsum, lacinia nec consectetur quis, luctus rhoncus ante. 
+                                    </p>
+                                </div>
+                        <?php       
+                            }
+                        ?>
+                        <!--
                         <div>
                             <p class="date">2019-01-01. Angela Merkel. 
                             <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star-half-alt"></i> <i class="far fa-star"></i> 
@@ -87,6 +124,7 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris convallis tellus at urna tempor suscipit. Integer dui ipsum, lacinia nec consectetur quis, luctus rhoncus ante. 
                             </p>
                         </div>
+                        -->
                         <div class="text-right"><a href="">See more...</a></div>
                 </div>
 			</div>

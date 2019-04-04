@@ -9,6 +9,8 @@ class Government extends CI_Controller {
         $this->load->library('ion_auth');
         $this->load->model('entities_model');
         $this->load->model('products_model');
+        $this->load->model('news_model');
+        $this->load->model('reviews_model');
         $this->load->library('pagination');
         
         if (!$this->ion_auth->logged_in()) {
@@ -50,8 +52,10 @@ class Government extends CI_Controller {
         if (empty($data['agency'])) {
             show_404();
         }
-        //echo $data['agency']['entity_id']; die();
         $data['programs'] = $this->products_model->get_prods_by_entity($data['agency']['entity_id']);
+        $data['news'] = $this->news_model->get_news_by_entity($data['agency']['entity_id']);
+        $data['reviews'] = $this->reviews_model->get_reviews_by_entity($data['agency']['entity_id']);
+
         //echo '<pre>'; print_r($data); echo '</pre>';
 
         $this->load->view('templates/header', $data);

@@ -70,11 +70,10 @@ class products_model extends CI_Model {
 		
 		if ($data == NULL) {
 			$data = array(
-                    'entity_id' => $this->input->post('entity_name'),
-                    'prod_name' => $this->input->post('entity_alias'),
-                    'prod_alias' => $this->input->post('entity_type'),
-                    'prod_desc' => $this->input->post('entity_slug'),
-                    'date_created' => $this->input->post('entity_desc'),
+                    'entity_id' => $this->input->post('entity_id'),
+                    'prod_name' => $this->input->post('prod_name'),
+                    'prod_alias' => $this->input->post('prod_alias'),
+                    'prod_desc' => $this->input->post('prod_desc'),
                     'prod_slug' => $this->input->post('entity_user'),
                     'prod_remarks' => $this->input->post('prod_remarks'),
                     'trash' => 0
@@ -97,11 +96,10 @@ class products_model extends CI_Model {
         
         if ($data == NULL) {
             $data = array(
-                    'entity_id' => $this->input->post('entity_name'),
-                    'prod_name' => $this->input->post('entity_alias'),
-                    'prod_alias' => $this->input->post('entity_type'),
-                    'prod_desc' => $this->input->post('entity_slug'),
-                    'date_created' => $this->input->post('entity_desc'),
+                    'entity_id' => $this->input->post('entity_id'),
+                    'prod_name' => $this->input->post('prod_name'),
+                    'prod_alias' => $this->input->post('prod_alias'),
+                    'prod_desc' => $this->input->post('prod_desc'),
                     'prod_slug' => $this->input->post('entity_user'),
                     'prod_remarks' => $this->input->post('prod_remarks'),
                     'trash' => $this->input->post('trash')
