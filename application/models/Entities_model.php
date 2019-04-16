@@ -87,7 +87,7 @@ class entities_model extends CI_Model {
 	}
 
 	public function set_entity($data = NULL) { //new entry
-        echo '<pre>'; print_r($_POST); echo '</pre>'; die();
+        //echo '<pre>'; print_r($_POST); echo '</pre>'; die();
         $this->load->helper('url');
 		
 		if ($data == NULL) {
@@ -97,17 +97,30 @@ class entities_model extends CI_Model {
                     'entity_type' => $this->input->post('entity_type'),
                     'entity_slug' => $this->input->post('entity_slug'),
                     'entity_desc' => $this->input->post('entity_desc'),
+                    'entity_logo_filename' => $this->input->post('entity_logo_filename'),
+                    'entity_parent' => $this->input->post('entity_parent'),
                     'entity_user' => $this->input->post('entity_user'),
+                    'entity_exec' => $this->input->post('entity_exec'),
+                    'entity_hq' => $this->input->post('entity_hq'),
+                    'entity_website' => $this->input->post('entity_website'),
+                    'entity_remarks' => $this->input->post('entity_remarks'),
                     'trash' => 0
 			);
-		}
+        }
+        
 		//insert new entry
-		$this->db->insert('entities', $data);
-		$report_id = $this->db->insert_id();
-		
-		return $report_id;
+        if ( ! $this->db->insert('entities', $data) ) {
+            $error = $this->db->error();
+            return $error;
+        }
+        else{
+            $report_id = $this->db->insert_id();
+            return $report_id;
+        }
+        
 	}
-	
+    
+    
 	public function update_entity($id = NULL, $data = NULL) {
 		//echo '<pre>'; print_r($_POST); echo '</pre>'; die();
 		$this->load->helper('url');

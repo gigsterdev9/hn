@@ -64,5 +64,77 @@ class Government extends CI_Controller {
 
     }
 
+    public function add() {
+        /*$allowed_groups = array('admin','encoder');
+        if (!$this->ion_auth->in_group($allowed_groups)) {
+            show_404();
+        }
+        */
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        $data['title'] = 'New entry';
+
+        //validation rules
+        $this->form_validation->set_rules('entity_name', 'Entity Name', 'required');
+        $this->form_validation->set_rules('entity_type', 'Type', 'required');
+        //$this->form_validation->set_rules('entity_user', 'Designated User', 'required');
+        
+        if ($this->form_validation->run() === FALSE) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('government/add');
+            $this->load->view('templates/footer');
+
+        }
+        else {
+            
+            //check entry dupe
+
+            //create slug
+            $this->load->helper('url');
+            if ($this->input->post('entity_alias') != NULL ) {
+                $slug = url_title($this->input->post('entity_alias'), 'dash', TRUE);
+            }
+            else{
+                //entity name cannot be null since it has a required validation rule
+                $slug = url_title($this->input->post('entity_name'), 'dash', TRUE);
+            }   
+
+
+            //check slug dupe
+
+            //finalize data
+            $data = array(
+                'entity_name' => $this->input->post('entity_name'),
+                'entity_alias' => $this->input->post('entity_alias'),
+                'entity_type' => $this->input->post('entity_type'),
+                'entity_slug' => $slug,
+                'entity_desc' => $this->input->post('entity_desc'),
+                'entity_logo_filename' => $this->input->post('entity_logo_filename'),
+                'entity_parent' => $this->input->post('entity_parent'),
+                'entity_user' => $this->input->post('entity_user'),
+                'entity_exec' => $this->input->post('entity_exec'),
+                'entity_hq' => $this->input->post('entity_hq'),
+                'entity_website' => $this->input->post('entity_website'),
+                'entity_remarks' => $this->input->post('entity_remarks'),
+                'trash' => 0
+            );
+
+            //execute insert
+            $new_agency_id = $this->entities_model->set_entity($data);
+            
+            //audit trail
+            //$this->tracker_model->log_event('visitor_id', $new_visitor_id, 'created', '');
+            
+            $data['title'] = 'New entry';
+            $data['alert_success'] = 'Entry successful.';
+            
+            $this->load->view('templates/header', $data);
+            $this->load->view('government/add');
+            $this->load->view('templates/footer');
+        }
+    }
+
 
 }

@@ -1,27 +1,38 @@
 <?php 
+$allowed_groups = array('admin'); 
 //echo '<pre>'; print_r($agencies); echo '</pre>';
 ?>
 
 <div class="container">
 	<h2><span class="glyphicon glyphicon-folder-open"></span>&nbsp; GOVERNMENT</h2>
 	<h3><span class="glyphicon glyphicon-file"></span> Lorem ipsum dolor consectitur sit amet </h3>
+    <?php
+        if ($this->ion_auth->in_group($allowed_groups)) {
+            echo '<div class="container-fluid text-right new-entry"><a href="'.base_url('government/add').'"><i class="fas fa-plus-circle"></i> New entry </a></div>';
+        }
+	?>
 	<div class="panel panel-default">
-		<!-- <div class="text-right back-link"><a href="javascript:history.go(-1)">&laquo; Back</a></div> -->
+		<div class="text-right back-link"><a href="javascript:history.go(-1)">&laquo; Back</a></div>
 		<div class="panel-body">
-        <div class="row main-content">
-                <div class="col-md-1">&nbsp;</div>
+        <div class="row main-content" >
                 <?php 
                 foreach ($agencies as $agency) {
+                    $entity_logo = ( $agency['entity_logo_filename'] ) ? $agency['entity_logo_filename'] : 'generic-logo.png' ;
                 ?>
-                    <div class="col-md-2 text-center">
+                    <div class="col-md-2 text-center entity-thumb" >
                     <a href="<?php echo base_url('government/'.$agency['entity_slug']) ?>">
-                    <img src="<?php echo base_url('/images/'.$agency['entity_logo_filename']) ?>" alt="placeholder_logo" class="company-logo" /><br />
+                    <img src="<?php echo base_url('/images/'.$entity_logo) ?>" alt="agency-logo" class="company-logo" /><br />
                     </a>
                     <a href="<?php echo base_url('government/'.$agency['entity_slug']) ?>">
-                    <strong><?php echo $agency['entity_name'].' ('.strtoupper($agency['entity_slug']).')'; ?></strong>
+                        <strong>
+                            <?php 
+                                echo $agency['entity_name'];
+                                if ( $agency['entity_alias'] != NULL ) echo ' ('.strtoupper($agency['entity_alias']).')'; 
+                            ?>
+                        </strong>
                     </a>
                     </div>
-                <?php    
+                <?php 
                 }
                 ?>
                 <!-- 
@@ -67,7 +78,7 @@
                 </div>
                 -->
 
-                <div class="col-md-1">&nbsp;</div>
+                
 			</div>
 		</div>
 		

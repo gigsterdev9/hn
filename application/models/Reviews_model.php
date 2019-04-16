@@ -18,7 +18,8 @@ class reviews_model extends CI_Model {
         //echo $entity_id; die();
 
 		$this->db->select("*");
-		$this->db->from('reviews');
+        $this->db->from('reviews as a');
+        $this->db->join('users as b', 'b.id = a.reviewer');
 		$this->db->where("target = '$entity_id' and trash = 0");
 		$this->db->order_by('review_id', 'ASC');
 		$this->db->limit($limit, $start);
@@ -34,7 +35,8 @@ class reviews_model extends CI_Model {
 		}
 		
 		$this->db->select("*");
-		$this->db->from('reviews');
+        $this->db->from('reviews');
+        $this->db->join('users as b', 'b.id = a.reviewer');
 		if ($include_trashed === TRUE) {
 			$this->db->where("review_id = '$review_id'"); //omit trash flag = 0 to be able to 'undo' trash action one last time
 		}

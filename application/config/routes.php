@@ -63,6 +63,8 @@ $route['users'] = 'users';
 $route['settings/edit/(:any)'] = 'settings/edit/$1';
 $route['settings'] = 'settings';
 
+$route['government/add'] = 'government/add';
+$route['government/edit/(:any)'] = 'government/edit/$1';
 $route['government/(:any)'] = 'government/view/$1';
 $route['government'] = 'government';
 

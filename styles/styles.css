@@ -95,6 +95,8 @@ table.mobile-view {display:none}
 
 /*Index List*/
 .index-section-title {margin-left: 10px}
+.entity-thumb {height: 160px}
+.new-entry {margin-bottom: 10px} 
 
 /* Modal Details */
 .match-found {font-size: 1em}
