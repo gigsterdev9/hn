@@ -42,18 +42,18 @@
 						<input type="text" class="form-control" name="entity_alias" value="<?php echo ($this->input->get('entity_alias') !== null) ? $this->input->get('entity_alias') : set_value('entity_alias'); ?>" />
 					</div>
 				</div>
-				<div class="form-group">
+				<!--
+                <div class="form-group">
 					<label class="control-label col-sm-2" for="entity_type">Type<span class="text-info">*</span></label>
 					<div class="col-sm-10">
 						<select class="form-control select2-single" name="entity_type">
 							<option value="">Select</option>
                             <option value="0" <?php if (set_value('entity_type') == '0') echo 'selected' ?> >Agency</option>
 							<option value="1" <?php if (set_value('entity_type') == '1') echo 'selected' ?> >Business</option>
-                            <option value="2" <?php if (set_value('entity_type') == '1') echo 'selected' ?> >Individual</option>
+                            <option value="2" <?php if (set_value('entity_type') == '2') echo 'selected' ?> >Individual</option>
 						</select>
 					</div>
 				</div>
-                <!--
                 <div class="form-group">
 					<label class="control-label col-sm-2" for="entity_slug">Slug</label>
 					<div class="col-sm-10">
@@ -126,6 +126,7 @@
 				
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
+                        <input type="hidden" name="entity_type" value="0" />
 						<button type="submit" class="btn btn-default">Submit</button>
 					</div>
 				</div>

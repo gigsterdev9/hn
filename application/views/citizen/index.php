@@ -9,21 +9,21 @@
 		<!-- <div class="text-right back-link"><a href="javascript:history.go(-1)">&laquo; Back</a></div> -->
 		<div class="panel-body">
         <div class="row main-content">
-                <div class="col-md-1">&nbsp;</div>
                 <?php 
-                $ctr = 1;
+                //$ctr = 1;
                 foreach ($individuals as $ind) {
                 ?>
-                    <div class="col-md-2 text-center">
+                    <div class="col-md-2 text-center entity-thumb">
                         <a href="<?php echo base_url('citizen/'.$ind['entity_slug']) ?>">
                             <img src="<?php echo base_url('/images/'.$ind['entity_logo_filename']) ?>" alt="placeholder_logo" class="company-logo" /><br />
                         </a>
                         <a href="<?php echo base_url('citizen/'.$ind['entity_slug']) ?>">
                             <strong><?php echo $ind['entity_name'].' ('.strtoupper($ind['entity_slug']).')'; ?></strong>
                         </a>
-                        <?php echo ($ctr % 5); ?>
+                        <?php //echo ($ctr % 5); ?>
                     </div>
                 <?php    
+                    /*
                     $ctr++;
                     if (($ctr % 5) == 0) {
                         echo '<div class="col-md-1">&nbsp;</div>';
@@ -31,7 +31,7 @@
                         echo '<div class="row main-content">';
                         echo '<div class="col-md-1">&nbsp;</div>';
                     }
-                    
+                    */
                 }
                 ?>
                 <!-- 
@@ -77,7 +77,6 @@
                 </div>
                 -->
 
-                <div class="col-md-1">&nbsp;</div>
 			</div>
 		</div>
 		
